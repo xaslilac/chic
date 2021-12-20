@@ -1,0 +1,8 @@
+{
+	"extends": "@mckayla/tsconfig",
+	"compilerOptions": {
+		"outDir": "./target",
+		"jsx": "react-jsx"
+	},
+	"include": ["./src/**/*"]
+}
