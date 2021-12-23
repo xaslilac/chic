@@ -2,7 +2,8 @@
 	"extends": "@mckayla/tsconfig",
 	"compilerOptions": {
 		"outDir": "./target",
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"types": ["jest"]
 	},
 	"include": ["./src/**/*"]
 }

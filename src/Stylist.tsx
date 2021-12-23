@@ -1,18 +1,6 @@
 import { createContext, memo, ReactNode, useContext, useEffect, useMemo } from "react";
 
-export function css(strings: TemplateStringsArray, ...fills: unknown[]): string {
-	let result = "";
-
-	for (let i = 0; i < fills.length; i++) {
-		result += strings[i];
-		result += String(fills[i]);
-	}
-
-	// TODO: strings.at(-1)
-	result += strings[strings.length - 1];
-
-	return result;
-}
+export type Styles = Record<string, string> | string;
 
 export function resolveClassName(name: string, context: StylistContextValue): string {
 	return (
@@ -33,7 +21,7 @@ export const StylistContext = createContext<StylistContextValue>({
 
 export interface StylistProps {
 	children?: ReactNode;
-	styles?: Record<string, string> | string;
+	styles?: Styles;
 }
 
 export const Stylist = memo((props: StylistProps) => {
