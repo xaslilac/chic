@@ -1,6 +1,6 @@
 {
 	"name": "react-chic",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"author": "McKayla Washburn <mckayla@hey.com>",
 	"description": "A nice to use CSS-kind-of-in-JS solution",
 	"keywords": [],
@@ -10,7 +10,6 @@
 	"bugs": "https://github.com/aslilac/chic/issues",
 	"type": "commonjs",
 	"main": "./target/main.js",
-	"module": "./target/module/main.js",
 	"types": "./target/main.d.ts",
 	"exports": {
 		"require": "./target/main.js",
