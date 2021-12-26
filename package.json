@@ -12,8 +12,7 @@
 	"main": "./target/main.js",
 	"types": "./target/main.d.ts",
 	"exports": {
-		"require": "./target/main.js",
-		"import": "./target/module/main.js"
+		"require": "./target/main.js"
 	},
 	"bin": {},
 	"files": [
