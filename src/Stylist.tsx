@@ -1,6 +1,6 @@
 import { createContext, memo, ReactNode, useContext, useEffect, useMemo } from "react";
 
-export type Styles = Record<string, string> | string;
+import { Styles } from "./types";
 
 export function resolveClassName(name: string, context: StylistContextValue): string {
 	return (
@@ -44,7 +44,7 @@ export const Stylist = memo((props: StylistProps) => {
 
 	const _super = useContext(StylistContext);
 
-	const contextValue = useMemo<StylistContextValue>(
+	const contextValue: StylistContextValue = useMemo(
 		() => ({
 			_super,
 			styles: (typeof styles !== "string" && styles) || {},

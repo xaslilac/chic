@@ -1,6 +1,7 @@
 import { ComponentType } from "react";
 
-import { Styles, Stylist } from "./Stylist";
+import { Stylist } from "./Stylist";
+import { Styles } from "./types";
 
 /**
  * Utility function that wraps your component in a Stylist provider

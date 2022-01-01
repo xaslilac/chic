@@ -3,17 +3,16 @@ import {
 	ComponentType,
 	forwardRef,
 	memo,
-	ReactNode,
 	useContext,
 	useMemo,
 } from "react";
 
-import { classNames, CxArgs } from "./classNames";
+import { classNames } from "./classNames";
 import { StylistContext, resolveClassName } from "./Stylist";
+import { CxProp } from "./types";
 
 type HtmlTag = keyof JSX.IntrinsicElements;
 type PropsByTag<Tag extends HtmlTag> = Omit<ComponentPropsWithRef<Tag>, "className">;
-export type CxProp = string | CxArgs;
 
 type Chic = {
 	[Tag in HtmlTag]: ComponentType<ChicComponentProps<Tag>>;

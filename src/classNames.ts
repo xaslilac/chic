@@ -1,6 +1,4 @@
-export type CxArgs = Array<
-	Record<string, unknown> | string | false | null | undefined | 0 | 0n
->;
+import { CxArgs } from "./types";
 
 export function classNames(...args: CxArgs) {
 	const names: string[] = [];
