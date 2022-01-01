@@ -4,14 +4,11 @@ import { classNames } from "./classNames";
 import { StylistContext, StylistContextValue, resolveClassName } from "./Stylist";
 import { CxArgs, StyleModule } from "./types";
 
-export function useStyles(styles: StyleModule) {
+export function useStyles(styles?: StyleModule) {
 	const context = useContext(StylistContext);
 
 	const imaginaryContext: StylistContextValue = useMemo(
-		() => ({
-			_super: context,
-			styles,
-		}),
+		() => (styles ? { _super: context, styles } : context),
 		[context, styles],
 	);
 
