@@ -43,22 +43,19 @@ export const chic = new Proxy(new Map<string, ComponentType>(), {
 	@typescript-eslint/no-unsafe-assignment,
 	@typescript-eslint/no-unsafe-argument */
 const Styled = (Tag: string) =>
-	memo(
-		forwardRef((props: any, ref) => {
-			const { children, cx, ...attrs } = props;
+	forwardRef((props: any, ref) => {
+		const { children, cx, ...attrs } = props;
 
-			const context = useContext(StylistContext);
+		const context = useContext(StylistContext);
 
-			const className = useMemo(() => {
-				const rawNames =
-					typeof cx === "string" ? cx.split(" ") : classNames(...cx);
-				return rawNames.map((name) => resolveClassName(name, context)).join(" ");
-			}, [cx]);
+		const className = useMemo(() => {
+			const rawNames = typeof cx === "string" ? cx.split(" ") : classNames(...cx);
+			return rawNames.map((name) => resolveClassName(name, context)).join(" ");
+		}, [cx]);
 
-			return (
-				<Tag ref={ref} className={className} {...attrs}>
-					{children}
-				</Tag>
-			);
-		}),
-	);
+		return (
+			<Tag ref={ref} className={className} {...attrs}>
+				{children}
+			</Tag>
+		);
+	});
