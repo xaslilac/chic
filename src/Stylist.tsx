@@ -56,3 +56,5 @@ export const Stylist = memo((props: StylistProps) => {
 		<StylistContext.Provider value={contextValue}>{children}</StylistContext.Provider>
 	);
 });
+
+Stylist.displayName = "Stylist";

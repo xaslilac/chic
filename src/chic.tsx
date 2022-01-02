@@ -29,6 +29,7 @@ export const chic = new Proxy(new Map<string, ComponentType>(), {
 		}
 
 		const component = Styled(tag);
+		component.displayName = `chic.${tag}`;
 
 		target.set(tag, component);
 		return component;
