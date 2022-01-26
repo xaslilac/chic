@@ -7,14 +7,15 @@ import { Styles } from "./types";
  * Utility function that wraps your component in a Stylist provider
  */
 export function withStyles<Props>(styles: Styles, Component: ComponentType<Props>) {
-	return Object.assign(
-		function (props: Props) {
-			return (
-				<Stylist styles={styles}>
-					<Component {...props} />
-				</Stylist>
-			);
-		},
-		{ displayName: `withStyles(${Component.displayName ?? "Anonymous"})` },
-	);
+	const wrapper = function (props: Props) {
+		return (
+			<Stylist styles={styles}>
+				<Component {...props} />
+			</Stylist>
+		);
+	};
+
+	wrapper.displayName = `withStyles(${Component.displayName ?? "Anonymous"})`;
+
+	return wrapper;
 }

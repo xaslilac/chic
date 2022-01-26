@@ -13,6 +13,12 @@ export function classNames(...args: CxArgs) {
 			continue;
 		}
 
+		if (Array.isArray(arg)) {
+			const recursiveResult = classNames(...arg);
+			recursiveResult.forEach((name) => names.push(name));
+			continue;
+		}
+
 		for (const [key, value] of Object.entries(arg)) {
 			if (value) {
 				names.push(key);

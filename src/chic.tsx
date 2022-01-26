@@ -1,25 +1,11 @@
-import {
-	ComponentPropsWithRef,
-	ComponentType,
-	forwardRef,
-	memo,
-	useContext,
-	useMemo,
-} from "react";
+import { ComponentType, forwardRef, useContext, useMemo } from "react";
 
 import { classNames } from "./classNames";
 import { StylistContext, resolveClassName } from "./Stylist";
-import { CxProp } from "./types";
-
-type HtmlTag = keyof JSX.IntrinsicElements;
-type PropsByTag<Tag extends HtmlTag> = Omit<ComponentPropsWithRef<Tag>, "className">;
+import { ChicPropsWithRef, HtmlTag } from "./types";
 
 type Chic = {
-	[Tag in HtmlTag]: ComponentType<ChicComponentProps<Tag>>;
-};
-
-type ChicComponentProps<Tag extends HtmlTag> = PropsByTag<Tag> & {
-	cx?: CxProp;
+	[Tag in HtmlTag]: ComponentType<ChicPropsWithRef<Tag>>;
 };
 
 export const chic = new Proxy(new Map<string, ComponentType>(), {
