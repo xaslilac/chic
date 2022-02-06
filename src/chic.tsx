@@ -35,6 +35,7 @@ const Styled = (Tag: string) =>
 		const context = useContext(StylistContext);
 
 		const className = useMemo(() => {
+			if (!cx) return;
 			const rawNames = typeof cx === "string" ? cx.split(" ") : classNames(...cx);
 			return rawNames.map((name) => resolveClassName(name, context)).join(" ");
 		}, [cx]);
