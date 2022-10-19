@@ -1,7 +1,8 @@
 {
 	"extends": ".",
 	"compilerOptions": {
-		"types": []
+		"types": [],
+		"jsx": "react-jsx"
 	},
 	"exclude": ["./**/*.test.*"]
 }

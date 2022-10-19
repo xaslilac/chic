@@ -8,17 +8,31 @@ type Chic = {
 	[Tag in HtmlTag]: ComponentType<ChicPropsWithRef<Tag>>;
 };
 
-export const chic = new Proxy(new Map<string, ComponentType>(), {
-	get(target, tag: string) {
-		if (target.has(tag)) {
-			return target.get(tag);
+const chicCache = new Map<string, ComponentType>();
+const chicBase = Object.create(null);
+Object.defineProperty(chicBase, "for", {
+	configurable: false,
+	writable: false,
+	value: function (tag: string) {
+		if (chicCache.has(tag)) {
+			return chicCache.get(tag);
 		}
 
 		const component = Styled(tag);
 		component.displayName = `chic.${tag}`;
 
-		target.set(tag, component);
+		chicCache.set(tag, component);
 		return component;
+	},
+});
+
+export const chic = new Proxy(chicBase, {
+	get(target, tag: string) {
+		if (tag === "for") {
+			return Reflect.get(target, tag);
+		}
+
+		return target.for(tag);
 	},
 }) as unknown as Chic;
 

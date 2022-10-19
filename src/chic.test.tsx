@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import TestRenderer from "react-test-renderer";
 
 import { chic } from "./chic";

@@ -1,6 +1,6 @@
-import { createContext, memo, ReactNode, useContext, useEffect, useMemo } from "react";
+import { createContext, memo, ReactNode, useContext, useMemo } from "react";
 
-import { Styles } from "./types";
+import { StyleModule } from "./types";
 
 export function resolveClassName(name: string, context: StylistContextValue): string {
 	return (
@@ -21,33 +21,18 @@ export const StylistContext = createContext<StylistContextValue>({
 
 export interface StylistProps {
 	children?: ReactNode;
-	styles?: Styles;
+	styles?: StyleModule;
 }
 
 export const Stylist = memo((props: StylistProps) => {
-	const { children, styles } = props;
-
-	// TODO: This could be more performant if we didn't unmount over eagerly
-	useEffect(() => {
-		if (typeof styles !== "string") {
-			return;
-		}
-
-		const styleElement = document.createElement("style");
-		styleElement.innerHTML = styles;
-		document.head.appendChild(styleElement);
-
-		return () => {
-			document.head.removeChild(styleElement);
-		};
-	}, [styles]);
+	const { children, styles = {} } = props;
 
 	const _super = useContext(StylistContext);
 
 	const contextValue: StylistContextValue = useMemo(
 		() => ({
 			_super,
-			styles: (typeof styles !== "string" && styles) || {},
+			styles,
 		}),
 		[_super, styles],
 	);

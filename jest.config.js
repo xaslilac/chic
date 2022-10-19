@@ -1,12 +1,5 @@
-module.exports = {
+export default {
 	preset: "ts-jest",
 	testEnvironment: "node",
-	testPathIgnorePatterns: ["<rootDir>/target/"],
-	globals: {
-		"ts-jest": {
-			tsconfig: {
-				jsx: "react-jsxdev",
-			},
-		},
-	},
+	testPathIgnorePatterns: ["<rootDir>/build/"],
 };

@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import { classNames } from "./classNames";
 
 test("classNames filters falsey values", () => {
